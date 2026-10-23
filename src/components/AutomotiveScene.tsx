@@ -9,7 +9,7 @@ import gsap from 'gsap';
 function Wheel({ x, z }: { x: number; z: number }) {
   const tire = useRef<THREE.Group>(null);
   return (
-    <group ref={tire} position={[x, 0.38, z]} rotation={[0, 0, Math.PI / 2]}>
+    <group ref={tire} position={[x, 0.38, z]} rotation={[Math.PI / 2, 0, 0]}>
       <mesh castShadow receiveShadow>
         <cylinderGeometry args={[0.36, 0.36, 0.22, 48]} />
         <meshStandardMaterial color="#090c0f" metalness={0.12} roughness={0.82} />
