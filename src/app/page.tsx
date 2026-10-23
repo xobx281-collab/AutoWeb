@@ -1,10 +1,10 @@
 import Link from 'next/link';
-import dynamic from 'next/dynamic';
 import { ArrowRight, ArrowUpRight, MoveUpRight } from 'lucide-react';
 import { vehicles } from '@/data/vehicles';
 import VehicleImage from '@/components/VehicleImage';
 import EnquiryForm from '@/components/EnquiryForm';
-const VehicleScene = dynamic(() => import('@/components/VehicleScene'), { ssr: false, loading: () => <div className="scene-loading"><span>PREPARING THE STUDIO</span></div> });
+import dynamic from 'next/dynamic';
+const VehicleScene = dynamic(() => import('@/components/AutomotiveScene'), { ssr: false, loading: () => <div className="scene-loading"><span>PREPARING THE STUDIO</span></div> });
 
 export default function HomePage() {
  const featured = [vehicles[0], vehicles[2], vehicles[3]];
