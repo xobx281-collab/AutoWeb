@@ -1,11 +1,12 @@
-'use client';
 import Link from 'next/link';
-import { useParams } from 'next/navigation';
+import { notFound } from 'next/navigation';
 import { ArrowLeft, ArrowUpRight } from 'lucide-react';
 import { vehicles } from '@/data/vehicles';
 import VehicleImage from '@/components/VehicleImage';
-export default function VehicleDetailPage() {
- const params=useParams<{slug:string}>(); const vehicle=vehicles.find(v=>v.slug===params.slug);
+export function generateStaticParams() { return vehicles.map((vehicle) => ({ slug: vehicle.slug })); }
+
+export default function VehicleDetailPage({ params }: { params: { slug: string } }) {
+ const vehicle=vehicles.find(v=>v.slug===params.slug);
  if(!vehicle) return <main className="page-shell"><section className="page-intro"><p className="eyebrow">VEHICLE NOT FOUND</p><h1>THIS ROAD<br/><em>ENDS HERE.</em></h1><Link className="text-link" href="/collection"><ArrowLeft size={14}/> RETURN TO COLLECTION</Link></section></main>;
  const related=vehicles.filter(v=>v.slug!==vehicle.slug&&v.category===vehicle.category).slice(0,2);
  return <main className="page-shell"><header className="site-header"><Link className="wordmark" href="/"><span className="wordmark-mark">N</span><span>NOIR <small>AUTOMOTIVE</small></span></Link><nav className="desktop-nav"><Link href="/">THE EXPERIENCE</Link><Link href="/collection">THE COLLECTION</Link><a href="/#private-viewing">PRIVATE VIEWING</a></nav><Link className="header-contact" href="/#private-viewing">MAKE AN ENQUIRY <ArrowUpRight size={13}/></Link><Link className="mobile-menu" href="/collection">COLLECTION ↗</Link></header>
