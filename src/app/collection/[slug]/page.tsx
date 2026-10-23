@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { notFound } from 'next/navigation';
 import { ArrowLeft, ArrowUpRight } from 'lucide-react';
 import { vehicles } from '@/data/vehicles';
 import VehicleImage from '@/components/VehicleImage';
