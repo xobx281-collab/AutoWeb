@@ -385,3 +385,6 @@ a,button,input,textarea,select,[role=button]{cursor:none}
 @media(max-width:900px){.noir-3d-scene{inset:22% -3% 8% 17%}.noir-3d-scene .scene-caption{right:7%;bottom:6%}}
 @media(max-width:600px){.noir-3d-scene{inset:32% -18% 12% -13%}.noir-3d-scene .scene-caption{right:17%;bottom:4%;font-size:8px;padding:10px 13px}.scene-reticle{inset:12% 12% 20%}}
 @media(prefers-reduced-motion:reduce){.noir-3d-scene{opacity:1}}
+
+.site-header.is-scrolled{background:linear-gradient(125deg,rgba(238,246,252,.19),rgba(160,180,194,.075) 48%,rgba(255,255,255,.11));box-shadow:0 20px 65px #0006,inset 0 1px #ffffff25,inset 0 -1px #ffffff05}
+@media(prefers-reduced-motion:reduce){.site-header.is-scrolled{transition:none}}
