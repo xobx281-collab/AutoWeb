@@ -1,3 +1,9 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = { images: { remotePatterns: [{ protocol: 'images.unsplash.com', hostname: 'images.unsplash.com' }] } };
+const isGitHubPages = process.env.GITHUB_ACTIONS === 'true';
+const nextConfig = {
+  output: 'export',
+  trailingSlash: true,
+  images: { unoptimized: true },
+  ...(isGitHubPages ? { basePath: '/AutoWeb', assetPrefix: '/AutoWeb/' } : {}),
+};
 export default nextConfig;
