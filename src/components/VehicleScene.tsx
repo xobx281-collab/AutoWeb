@@ -8,7 +8,7 @@ import * as THREE from 'three';
 function SculpturalForm() {
  const group = useRef<THREE.Group>(null);
  const body = useRef<Mesh>(null);
- useFrame((state, delta) => { if (group.current) { group.current.rotation.y = Math.sin(state.clock.elapsedTime * .18) * .12 + state.pointer.x * .08; group.current.position.y = Math.sin(state.clock.elapsedTime * .4) * .025; } if (body.current) body.current.rotation.z = Math.sin(state.clock.elapsedTime * .2) * .008; });
+ useFrame((state) => { if (group.current) { group.current.rotation.y = Math.sin(state.clock.elapsedTime * .18) * .12 + state.pointer.x * .08; group.current.position.y = Math.sin(state.clock.elapsedTime * .4) * .025; } if (body.current) body.current.rotation.z = Math.sin(state.clock.elapsedTime * .2) * .008; });
  return <group ref={group} rotation={[0, -.25, 0]}>
   <mesh ref={body} castShadow receiveShadow position={[0, .35, 0]} scale={[2.5,.52,1.08]}><sphereGeometry args={[1,64,32]}/><meshPhysicalMaterial color="#202326" metalness={.82} roughness={.22} clearcoat={1} clearcoatRoughness={.12}/></mesh>
   <mesh castShadow position={[.1,.7,0]} scale={[1.15,.38,.78]}><sphereGeometry args={[1,48,24]}/><meshPhysicalMaterial color="#080a0c" metalness={.65} roughness={.16} clearcoat={1}/></mesh>
