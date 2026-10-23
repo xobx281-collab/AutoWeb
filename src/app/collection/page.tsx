@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
-import { ArrowUpRight, Search } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { vehicles } from '@/data/vehicles';
 import VehicleImage from '@/components/VehicleImage';
 const categories = ['All vehicles','Performance','Luxury SUV','Luxury sedan','Grand tourer','MPV'];
