@@ -1,0 +1,9 @@
+'use client';
+import { useState, type FormEvent } from 'react';
+import { ArrowUpRight, Check } from 'lucide-react';
+const CONTACT_EMAIL = 'enquiries@noir-automotive.example';
+export default function EnquiryForm() {
+ const [sent, setSent] = useState(false);
+ function submit(event: FormEvent<HTMLFormElement>) { event.preventDefault(); const data = new FormData(event.currentTarget); const name = String(data.get('name') || '').trim(); const email = String(data.get('email') || '').trim(); const interest = String(data.get('interest') || 'Private consultation'); const message = String(data.get('message') || '').trim(); if (!name || !email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return; const subject = encodeURIComponent(`Private enquiry — ${interest}`); const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nInterest: ${interest}\n\n${message}`); window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`; setSent(true); }
+ return <form className="enquiry-form glass-panel" onSubmit={submit}><div className="form-grid"><label>Your name<input name="name" autoComplete="name" required placeholder="Full name" /></label><label>Email address<input name="email" type="email" autoComplete="email" required placeholder="you@example.com" /></label></div><label>I'm interested in<select name="interest"><option>Private vehicle viewing</option><option>Vehicle information</option><option>Automotive sourcing consultation</option><option>General enquiry</option></select></label><label>Anything we should know?<textarea name="message" rows={3} placeholder="Tell us what you have in mind (optional)" /></label><button className="button button-light form-submit" type="submit">{sent ? <><Check size={15}/> EMAIL DRAFT OPENED</> : <>PREPARE PRIVATE ENQUIRY <ArrowUpRight size={15}/></>}</button><p className="form-note">Your email app will open with a prepared message. Nothing is sent or stored by this website.</p></form>;
+}
